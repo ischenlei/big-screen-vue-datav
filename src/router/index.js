@@ -4,9 +4,13 @@ import VueRouter from 'vue-router'
 Vue.use(VueRouter)
 
 const routes = [{
+  path: '/template',
+  name: 'template',
+  component: () => import('@/views/template/index.vue'),
+},{
   path: '/',
   name: 'index',
-  component: () => import('../views/index.vue')
+  component: () => import('@/views/tianjing/index.vue')
 }]
 const router = new VueRouter({
   routes

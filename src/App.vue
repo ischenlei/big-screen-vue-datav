@@ -9,6 +9,6 @@
   width: 100vw;
   height: 100vh;
   background-color: #020308;
-  overflow: hidden;
+  overflow: auto;
 }
 </style>
