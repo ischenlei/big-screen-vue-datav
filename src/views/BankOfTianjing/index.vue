@@ -34,13 +34,9 @@ export default {
       // * 设计稿尺寸（px）
       baseWidth: 4900,
       baseHeight: 1620,
-      timing: null,
       loading: true,
-      dateDay: null,
-      dateYear: null,
-      dateWeek: null,
-      weekday: ['周日', '周一', '周二', '周三', '周四', '周五', '周六'],
-      decorationColor: ['#568aea', '#000000']
+      // * 定时函数
+      timing: null,
     }
   },
   components: {
@@ -51,16 +47,31 @@ export default {
     TimeLine
   },
   mounted() {
-    this.cancelLoading()
+    this.fetchData()
+    this.timing = setInterval(() => {
+      // 请求数据
+      this.fetchData()
+    }, 60000)
   },
-  beforeDestroy () {
-
+  beforeDestroy() {
+    clearInterval(this.timing)
   },
   methods: {
-    cancelLoading() {
-      setTimeout(() => {
+    // 根据自己的业务情况修改
+    fetchData() {
+      this.$axios({
+        url: '/api/mock',
+        method: 'post',
+        data: {
+
+        }
+      }).then(data => {
+        console.log(data);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
         this.loading = false
-      }, 500)
+      })
     }
   }
 }

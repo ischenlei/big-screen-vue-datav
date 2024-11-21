@@ -245,11 +245,12 @@ export default {
 
   },
   mounted () {
-    this.setData();
+    // 请求数据
+    this.fetchData();
   },
   methods: {
     // 根据自己的业务情况修改
-    setData () {
+    fetchData () {
       
     },
   }

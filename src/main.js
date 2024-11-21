@@ -2,7 +2,10 @@ import Vue from 'vue';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from './axios';
 import dataV from '@jiaminghi/data-view';
+import ElementUI from 'element-ui';
+import 'element-ui/lib/theme-chalk/index.css';
 // 引入全局css
 import './assets/scss/style.scss';
 // 按需引入vue-awesome图标
@@ -12,6 +15,7 @@ import 'vue-awesome/icons/chart-area.js';
 import 'vue-awesome/icons/chart-pie.js';
 import 'vue-awesome/icons/chart-line.js';
 import 'vue-awesome/icons/align-left.js';
+import './mock/index.js'
 
 //引入echart
 //4.x 引用方式
@@ -20,11 +24,13 @@ import echarts from 'echarts'
 //希望使用5.x版本的话,需要在package.json中更新版本号,并切换引用方式
 //import * as echarts from 'echarts'
 Vue.prototype.$echarts = echarts
+Vue.prototype.$axios = axios
 Vue.config.productionTip = false;
 
 // 全局注册
 Vue.component('icon', Icon);
 Vue.use(dataV);
+Vue.use(ElementUI);
 
 new Vue({
   router,

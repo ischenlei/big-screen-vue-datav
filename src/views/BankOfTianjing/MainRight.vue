@@ -34,7 +34,7 @@ export default {
         oddRowBGC: '#0A1225', //奇数行
         evenRowBGC: '#0A1225', //偶数行
         // index: true,
-        columnWidth: [400, 200, 400, 200, 200, 200],
+        columnWidth: [420, 200, 420, 200, 200, 200],
         // align: ['center']
       }
     };
@@ -46,11 +46,11 @@ export default {
     Echart,
   },
   mounted () {
-    this.setData();
+    // 请求数据
+    this.fetchData();
   },
   methods: {
-    // 根据自己的业务情况修改
-    setData () {
+    fetchData () {
       
     },
   }

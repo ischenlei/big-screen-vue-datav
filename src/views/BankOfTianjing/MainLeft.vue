@@ -73,7 +73,7 @@ export default {
               show: false
             },
             splitLine: {
-                show: false
+              show: false
             }
           },
           {
@@ -134,7 +134,6 @@ export default {
               fontSize: 30,
               padding: [0, 30, 0, 0],
               formatter:function(params){
-                console.log(params);
                 return params.data + '%';
               }
             },
@@ -159,11 +158,12 @@ export default {
     Echart,
   },
   mounted () {
-    this.setData();
+    // 请求数据
+    this.fetchData();
   },
   methods: {
     // 根据自己的业务情况修改
-    setData () {
+    fetchData () {
       
     },
   }

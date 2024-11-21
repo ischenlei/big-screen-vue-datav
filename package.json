@@ -1,17 +1,18 @@
 {
-  "name": "big-screen-vue-datav",
+  "name": "big-screen",
   "version": "1.5.1",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "build": "vue-cli-service build"
   },
   "dependencies": {
     "@jiaminghi/data-view": "^2.7.3",
     "@types/echarts": "^4.4.3",
+    "axios": "^0.21.0",
     "core-js": "^3.6.4",
     "echarts": "^4.6.0",
+    "element-ui": "^2.15.14",
     "vue": "^2.6.11",
     "vue-awesome": "^4.0.2",
     "vue-router": "^3.1.5",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-service": "~4.5.0",
+    "mockjs": "^1.1.0",
     "sass": "^1.26.5",
     "sass-loader": "^8.0.2",
     "vue-template-compiler": "^2.6.11"
