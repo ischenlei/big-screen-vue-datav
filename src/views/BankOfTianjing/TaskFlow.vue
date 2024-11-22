@@ -9,7 +9,7 @@
         <div class="flow-block__content--flow1">
           <div v-for="item in flow1Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -30,7 +30,7 @@
         <div class="flow-block__content--flow2">
           <div v-for="item in flow2Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -53,7 +53,7 @@
         <div class="flow-block__content--flow3">
           <div v-for="item in flow3Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -73,7 +73,7 @@
         <div class="flow-block__content--flow4">
           <div v-for="item in flow4Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -94,7 +94,7 @@
         <div class="flow-block__content--flow5">
           <div v-for="item in flow5Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -117,7 +117,7 @@
         <div class="flow-block__content--flow6">
           <div v-for="item in flow6Info" :class="{'flow--disabled': item.disabled}">
             <img class="icon-task" :src="icon[item.icon]" alt="">
-            <span :class="{'text-warp': item.icon === 'task2'}">{{ item.text }}</span>
+            <span>{{ item.text }}</span>
           </div>
         </div>
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
@@ -207,13 +207,13 @@ export default {
         {text: '蓟州行业务提前停止', icon: 'task1'},
       ],
       flow2Info: [
-        {text: '蓟州行网点T-1日 轧账&签退', icon: 'task2'},
+        {text: '蓟州行网点T-1日 \n轧账&签退', icon: 'task2'},
         {text: '业务应急预案', icon: 'task1'},
         {text: '决策点一', icon: 'task1'},
         {text: '业务系统T-1日批处理', icon: 'task1'},
       ],
       flow3Info: [
-        {text: '行内改造业务系统 应用&参数部署', icon: 'task2'},
+        {text: '行内改造业务系统 \n应用&参数部署', icon: 'task2'},
         {text: '决策点二', icon: 'task1'},
       ],
       flow4Info: [
@@ -231,7 +231,7 @@ export default {
       // disabled 控制图标置灰状态
       flow6Info: [
         {text: '蓟州支行新网点试营业', icon: 'task1', disabled: true},
-        {text: '蓟州支行新网点T+1 轧账&签退', icon: 'task2', disabled: true},
+        {text: '蓟州支行新网点T+1 \n轧账&签退', icon: 'task2', disabled: true},
         {text: '投产后处理', icon: 'task1', disabled: true},
         {text: 'Ｔ+1日批处理', icon: 'task1', disabled: true},
         {text: '决策点四', icon: 'task1', disabled: true},
@@ -316,19 +316,16 @@ $box-width: 100%;
         height: 100%;
       }
       span {
+        width: 100%;
         position: absolute;
-        bottom: 22px;
+        // bottom: 22px;
+        top: 143px;
         left: 50%;
         transform: translateX(-50%);
         font-size: 14px;
         text-align: center;
-        white-space: nowrap;
+        white-space: pre;
         margin: auto;
-      }
-      span.text-warp {
-        min-width: 120px;
-        white-space: normal;
-        bottom: 5px;
       }
     }
   }
