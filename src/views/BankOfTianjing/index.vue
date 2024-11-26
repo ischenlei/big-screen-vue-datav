@@ -20,7 +20,7 @@
 </template>
 
 <script>
-// import drawMixin from "@/utils/drawMixin";
+import drawMixin from "@/utils/drawMixin";
 import MainLeft from "./MainLeft.vue";
 import MainCenter from './MainCenter.vue';
 import MainRight from './MainRight.vue';
@@ -28,7 +28,7 @@ import TaskFlow from "./TaskFlow.vue";
 import TimeLine from './TimeLine.vue';
 
 export default {
-  // mixins: [ drawMixin ],
+  mixins: [ drawMixin ],
   data() {
     return {
       // * 设计稿尺寸（px）

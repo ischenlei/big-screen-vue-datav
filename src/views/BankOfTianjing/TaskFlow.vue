@@ -15,9 +15,6 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow1Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="260" y="157" width="60" height="30" />
-          <image :href="icon.light" x="560" y="287" width="60" height="30" />
         </svg>
       </div>
     </div>
@@ -36,11 +33,6 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow2Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="260" y="157" width="60" height="30" />
-          <image :href="icon.light" x="10" y="416" width="60" height="30" />
-          <image :href="icon.light" x="650" y="287" width="60" height="30" />
-          <image :href="icon.light" x="483" y="300" width="60" height="30" transform="rotate(90 483 300)"/>
         </svg>
       </div>
     </div>
@@ -59,8 +51,6 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow3Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="650" y="287" width="60" height="30" />
         </svg>
       </div>
     </div>
@@ -79,9 +69,6 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow4Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="310" y="287" width="60" height="30" />
-          <image :href="icon.light" x="355" y="430" width="60" height="30" transform="rotate(270 355 430)"/>
         </svg>
       </div>
     </div>
@@ -100,11 +87,6 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow5Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="40" y="157" width="60" height="30" />
-          <image :href="icon.light" x="600" y="157" width="60" height="30" />
-          <image :href="icon.light" x="890" y="287" width="60" height="30" />
-          <image :href="icon.light" x="300" y="416" width="60" height="30" />
         </svg>
       </div>
     </div>
@@ -123,13 +105,112 @@
         <svg style="position: absolute; overflow: visible" width="100%" height="100%">
           <!-- 线 -->
           <line v-for="item in flow6Point" :x1="item.x1" :y1="item.y1" :x2="item.x2" :y2="item.y2" :stroke="lineColor" :stroke-width="lineWidth" />
-          <!-- 高光图标 -->
-          <image :href="icon.light" x="320" y="157" width="60" height="30" />
-          <image :href="icon.light" x="540" y="416" width="60" height="30" />
-          <image :href="icon.light" x="645" y="230" width="60" height="30" transform="rotate(90 645 230)"/>
         </svg>
       </div>
     </div>
+
+    <!-- 高光动画 -->
+    <svg style="position: absolute; bottom: 0; overflow: visible" width="100%" height="600px">
+      <path id="path1" d="M 212 172, 468 172, 468, 287, 468 302, 694 302" fill="transparent"/>
+      <!-- 高光图标 -->
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="7s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path1"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="7s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path1"/>
+        </animateMotion>
+      </image>
+
+      <path id="path2" d="M 695 302, 695 172, 1220 172, 1220 431" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path2"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="8s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path2"/>
+        </animateMotion>
+      </image>
+
+      <path id="path3" d="M 695 302, 695 431, 1220 431" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="8s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path3"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="8s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path3"/>
+        </animateMotion>
+      </image>
+
+      <path id="path4" d="M 1220 302, 2650 302" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="12s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path4"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="12s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path4"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="6s" dur="12s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path4"/>
+        </animateMotion>
+      </image>
+
+      <path id="path5" d="M 2195 302, 2195 100, 2620 100, 2620 476, 2195 476 Z" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path5"/>
+        </animateMotion>
+      </image>
+
+      <path id="path6" d="M 2660 302, 2660 172, 3470 172, 3470 302" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path6"/>
+        </animateMotion>
+      </image>
+
+      <path id="path7" d="M 2660 302, 2660 431, 3470 431, 3470 302, 3695 302" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path7"/>
+        </animateMotion>
+      </image>
+
+      <path id="path8" d="M 3695 302, 3695 172, 4380 172, 4380 302, 4480 302" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path8"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path8"/>
+        </animateMotion>
+      </image>
+
+      <path id="path9" d="M 3695 302, 3695 431, 4380 431, 4380 302" fill="transparent"/>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path9"/>
+        </animateMotion>
+      </image>
+      <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+        <animateMotion begin="3s" dur="11s" repeatCount="indefinite" rotate="auto">
+            <mpath href="#path9"/>
+        </animateMotion>
+      </image>
+
+    </svg>
   </div>
 </template>
 
@@ -156,7 +237,7 @@ const svgPoint = {
     {x1: -55, y1: 172, x2: 468, y2: 172},
     {x1: -55, y1: 431, x2: 468, y2: 431},
     {x1: 468, y1: 172, x2: 468, y2: 431},
-    {x1: 468, y1: 302, x2: 694, y2: 302},
+    {x1: 468, y1: 302, x2: 695, y2: 302},
   ],
   flow3Point: [
     {x1: -55, y1: 302, x2: 694, y2: 302},
@@ -262,6 +343,7 @@ export default {
 $box-width: 100%;
 
 .box-content {
+  position: relative;
   // height: $box-height;
   width: $box-width;
   padding-top: 30px;
