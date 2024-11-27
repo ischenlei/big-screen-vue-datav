@@ -73,7 +73,6 @@
                 repeatCount="indefinite"
                 keyTimes="0;0.5;1"
                 values="19;25;19"
-                keySplines="ease-in"
               />
             </circle>
           </svg>
@@ -93,6 +92,9 @@
 <script>
 
 export default {
+  props: {
+    loading: Boolean
+  },
   data() {
     return {
       timeIndex: 17,
@@ -109,13 +111,32 @@ export default {
   },
   mounted () {
     // 请求数据
-    this.fetchData();
+    this.fetchData()
+    setInterval(() => {
+      // 请求数据
+      this.fetchData()
+    }, 60000)
   },
   methods: {
     // 根据自己的业务情况修改
-    fetchData () {
-      
-    },
+    fetchData() {
+      // 添加loading
+      this.$emit('update:loading', true)
+      this.$axios({
+        url: '/api/mock',
+        method: 'post',
+        data: {
+
+        }
+      }).then(data => {
+        console.log(data);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+        // 取消loading
+        this.$emit('update:loading', false)
+      })
+    }
   }
 }
 
@@ -135,11 +156,11 @@ $box-height: 266px;
     position: absolute;
     width: 100%;
     height: 100%;
-    transform: translateY(-50%);
+    transform: translateY(-55%);
   }
   .wrapper {
     position: relative;
-    padding-top: 65px;
+    padding-top: 52px;
     z-index: 1;
   }
   .progress {

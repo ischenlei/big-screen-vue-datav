@@ -1,41 +1,39 @@
 <template>
   <div class="box-content">
-    <div>
-      <div class="box-task">
-        <img class="icon" :src="icon.taskIcon" alt="">
-        <div>
-          <div class="fs-sub-title">总任务</div>
-          <div class="font-DINAlternate fs-sub-num shadow">{{ totalTask }}</div>
+    <div class="animation" ref="animationRef"></div>
+    <div class="box-bg">
+      <div>
+        <div class="box-task-left">
+          <div>
+            <div class="fs-sub-title">总任务</div>
+            <div class="fs-sub-num shadow">{{ totalTask }}</div>
+          </div>
+        </div>
+        <div class="box-task-left" style="margin-top: 100px;">
+          <div>
+            <div class="fs-sub-title">已完成</div>
+            <div class="fs-sub-num shadow">{{ doneTask }}</div>
+          </div>
         </div>
       </div>
-      <div class="box-task">
-        <img class="icon" :src="icon.taskIcon" alt="">
-        <div>
-          <div class="fs-sub-title">已完成任务</div>
-          <div class="font-DINAlternate fs-sub-num colorGrass">{{ doneTask }}</div>
+      <div class="box-task__center">
+        <div class="text-center text-white">
+          <div class="fs-center-num">{{ stateTask }}</div>
+          <div class="fs-center-title">任务执行情况</div>
         </div>
       </div>
-    </div>
-    <div class="box-task__center">
-      <img :src="icon.taskBg" alt="">
-      <div class="text-center text-white">
-        <div class="font-DINAlternate fs-center-num">{{ stateTask }}</div>
-        <div class="fs-center-title mt-5">任务执行情况</div>
-      </div>
-    </div>
-    <div>
-      <div class="box-task">
-        <img class="icon" :src="icon.taskIcon" alt="">
-        <div>
-          <div class="fs-sub-title">剩余任务</div>
-          <div class="font-DINAlternate fs-sub-num text-blue shadow">{{ overTask }}</div>
+      <div>
+        <div class="box-task-right">
+          <div>
+            <div class="fs-sub-title">剩余任务</div>
+            <div class="fs-sub-num shadow">{{ overTask }}</div>
+          </div>
         </div>
-      </div>
-      <div class="box-task">
-        <img class="icon" :src="icon.taskIcon" alt="">
-        <div>
-          <div class="fs-sub-title">异常任务</div>
-          <div class="font-DINAlternate fs-sub-num text-yellow">{{ abnormalTask }}</div>
+        <div class="box-task-right" style="margin-top: 100px;">
+          <div>
+            <div class="fs-sub-title">异常任务</div>
+            <div class="fs-sub-num shadow">{{ abnormalTask }}</div>
+          </div>
         </div>
       </div>
     </div>
@@ -43,14 +41,16 @@
 </template>
 
 <script>
-import taskIcon from './img/task-icon.png'
-import taskBg from './img/task-bg.png'
+import lottie from "lottie-web"
+import animationData from "./animation/data.js";
 export default {
+  props: {
+    loading: Boolean
+  },
   data () {
     return {
       icon: {
-        taskIcon,
-        taskBg
+
       },
       totalTask: 365,
       doneTask: 289,
@@ -67,13 +67,42 @@ export default {
   },
   mounted () {
     // 请求数据
-    this.fetchData();
+    this.fetchData()
+    setInterval(() => {
+      // 请求数据
+      this.fetchData()
+    }, 60000)
+    this.loadAnimate()
   },
   methods: {
-    // 根据自己的业务情况修改
-    fetchData () {
-      
+    loadAnimate() {
+      const params = {
+        container: this.$refs.animationRef,
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        animationData: animationData
+      }
+      lottie.loadAnimation(params)
     },
+    // 根据自己的业务情况修改
+    fetchData() {
+      // 添加loading
+      this.$emit('update:loading', true)
+      this.$axios({
+        url: '/api/mock',
+        method: 'post',
+        data: {
+
+        }
+      }).then(data => {
+        console.log(data);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+        this.$emit('update:loading', false)
+      })
+    }
   }
 }
 </script>
@@ -82,19 +111,19 @@ export default {
 $box-height: 500px;
 $box-width: 100%;
 .fs-sub-title {
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
 }
 .fs-sub-num {
-  font-size: 34px;
+  font-size: 55px;
   line-height: 1;
 }
 .fs-center-title {
-  font-size: 36px;
+  font-size: 40px;
   line-height: 1;
 }
 .fs-center-num {
-  font-size: 80px;
+  font-size: 85px;
   line-height: 1;
 }
 .shadow {
@@ -104,53 +133,61 @@ $box-width: 100%;
 .box-content {
   height: $box-height;
   width: $box-width;
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding-top: 30px;
-  .box-task {
+  padding-top: 60px;
+  padding-left: 30px;
+  padding-right: 40px;
+  position: relative;
+  .box-bg {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .animation {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+    height:100%;
+    padding-top: 60px;
+    padding-left: 30px;
+    padding-right: 40px;
+  }
+  .box-task-left, .box-task-right {
     width: 385px;
-    height: 135px;
+    height: 105px;
     position: relative;
     margin-top: 70px;
     display: flex;
-    .icon {
-      width: 121px;
-      height: 135px;
-    }
+    left: 230px;
     & > div {
       flex: 1;
       margin: 5px 0;
       display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
+      // justify-content: space-evenly;
+      align-items: center;
       padding: 10px 0;
       padding-left: 30px;
-      background: linear-gradient(to right, 
-        transparent,
-        #1d3b5e 50%, /* 中间颜色 */
-        transparent);
-      border-width: 2px 0; /* 只设置上下边框宽度 */
-      border-style: solid;
-      border-image: linear-gradient(to right, 
-        transparent,
-        #214777 50%, /* 中间颜色 */
-        transparent) 1; 
     }
-    
+    .fs-sub-title {
+      padding-right: 40px;
+    }
+  }
+  .box-task-right {
+    left: 200px;
   }
   .box-task__center {
     position: relative;
-    align-self: center;
-    img {
-      display: flex;
-      width: 661px;
-      height: 359px;
-      margin: auto;
+    // align-self: center;
+    top: 30%;
+    white-space: nowrap;
+    .fs-center-title {
+      margin-top: 20px;
+      color: rgba(235, 243, 250, 1);
     }
     & > div {
       position: absolute;
-      top: 20%;
+      // top: 10%;
       left: 50%;
       transform: translate(-50%, -50%);
     }

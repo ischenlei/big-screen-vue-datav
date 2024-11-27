@@ -26,14 +26,40 @@
     .main-box {
       display: grid;
       grid-template-columns: 0.75fr 1.1fr 1fr;
-      padding: 0 90px;
+      padding-left: 70px;
+      padding-right: 40px;
     }
 
     .flow-box {
       margin-top: 10px;
-      padding-left: 90px;
+      padding-left: 70px;
+      padding-right: 40px;
+      display: flex;
+      flex-direction: column;
+      .flow-box__title {
+        display: flex;
+        align-items: center;
+        .flow-box__subtitle {
+          margin-left: 40px;
+          display: flex;
+          div {
+            margin-left: 30px;
+            img {
+              vertical-align: middle;
+              margin-right: 10px;
+            }
+            span {
+              font-size: 16px;
+              line-height: 1;
+            }
+          }
+        }
+      }
     }
 
-    .bottom-box {}
+    .bottom-box {
+      padding-left: 40px;
+      padding-right: 20px;
+    }
   }
 }

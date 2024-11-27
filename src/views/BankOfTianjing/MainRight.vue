@@ -10,49 +10,70 @@
 </template>
 
 <script>
-import Echart from '@/common/echart'
 export default {
+  props: {
+    loading: Boolean
+  },
   data () {
     return {
-      config: {
-        header: ['任务名称', '所属系统', '任务阶段', '任务状态', '开始时间', '结束时间'],
-        data: [
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点上缴所有登记簿、印章、印鉴卡片', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点按天津银行要求设立各登…', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrey'>未运行</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点T-1日现金全部缴存同业处理', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '2022.12.31 08:30', '2022.12.31 08:30'],
-          ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrey'>未运行</span>", '2022.12.31 08:30', '2022.12.31 08:30']
-        ],
-        rowNum: 4, //表格行数
-        headerHeight: 60,
-        headerBGC: 'transparent', //表头
-        oddRowBGC: '#0A1225', //奇数行
-        evenRowBGC: '#0A1225', //偶数行
-        // index: true,
-        columnWidth: [420, 200, 420, 200, 200, 200],
-        // align: ['center']
-      }
+      tableData: [
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点上缴所有登记簿、印章、印鉴卡片', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点按天津银行要求设立各登…', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrey'>未运行</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点T-1日现金全部缴存同业处理', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrey'>未运行</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30']
+      ]
     };
   },
   computed: {
-
-  },
-  components: {
-    Echart,
+    config() {
+      return {
+        header: ['任务名称', '所属系统', '任务阶段', '任务状态', '负责人', '开始时间', '结束时间'],
+        data: this.tableData || [],
+        rowNum: 6, //表格行数
+        headerHeight: 60,
+        headerBGC: '#071637', //表头
+        oddRowBGC: '#04102A', //奇数行
+        evenRowBGC: '#04102A', //偶数行
+        // index: true,
+        columnWidth: [420, 150, 400, 150, 150, 200, 200],
+        hoverPause: false
+        // align: ['center']
+      }
+    }
   },
   mounted () {
     // 请求数据
-    this.fetchData();
+    this.fetchData()
+    setInterval(() => {
+      // 请求数据
+      this.fetchData()
+    }, 60000)
   },
   methods: {
-    fetchData () {
-      
-    },
+    fetchData() {
+      // 添加loading
+      this.$emit('update:loading', true)
+      this.$axios({
+        url: '/api/mock',
+        method: 'post',
+        data: {
+
+        }
+      }).then(data => {
+        console.log(data);
+      }).catch((error) => {
+        console.log(error);
+      }).finally(() => {
+        // 取消loading
+        this.$emit('update:loading', false)
+      })
+    }
   }
 }
 </script>
@@ -65,31 +86,37 @@ $box-width: 100%;
   width: $box-width;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-between;
   .box-title {
+    margin-top: 10px;
     img {
-      width: 828px;
+      // width: 828px;
       height: 46px;
     }
   }
   .body-box {
-    // border-radius: 10px;
     overflow: hidden;
     width: 100%;
-    margin-top: 30px;
     ::v-deep .dv-scr-board {
-      height: 360px;
+      height: 420px;
+      border-bottom: 1px solid #313F5F;
       .header {
         font-size: 20px;
-        background-image: linear-gradient( 0deg, rgba(31,50,97,0.89) 0%, rgba(44,72,145,0) 100%);
-        border-width: 0 0 2px 0;
-        border-style: solid;
-        border-image: linear-gradient(to right, rgba(108, 149, 246, 0.34) ,#7BA2FF 50%, rgba(108, 149, 246, 0.31)) 1; 
+        border: 2px solid #313F5F;
       }
       .rows {
+        border-left: 1px solid #313F5F;
+        border-right: 1px solid #313F5F;
         .row-item {
-          font-size: 20px;
-          color: #999;
+          border-bottom: 1px solid #313F5F;
+          font-size: 18px;
+          color: #A1AABF;
+          &:nth-child(4) {
+            background: #04102A;
+            box-shadow: inset 0px -10px 20px 0px rgba(0,116,255,0.5);
+            border: 2px solid;
+            border-image: linear-gradient(0deg, rgba(44, 185, 255, 1), rgba(49, 63, 95, 1)) 2 2;
+          }
         }
       }
       .iconGrass::before, .iconBlue::before, .iconGrey::before {
