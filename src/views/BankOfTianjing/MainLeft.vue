@@ -20,7 +20,7 @@
                 <span>{{ item.rate }}</span>
                 <span class="sign">%</span>
               </div>
-              <div class="text">当前进度</div>
+              <div class="text">当前阶段进度</div>
             </div>
             <div>
               <div class="statis statis--blue">{{ item.totalNum }}</div>
