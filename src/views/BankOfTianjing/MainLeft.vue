@@ -8,7 +8,7 @@
         <div class="task-bar__card-left">
           <div class="column-bg">
             <div class="column-inner-warpper">
-              <div v-if="item.rate" class="column-inner" :style="{ height: item.rate + '%'}"></div>
+              <div v-if="item.rate > 0" class="column-inner" :style="{ height: calcHeight(item.rate) + '%'}"></div>
             </div>
           </div>
         </div>
@@ -44,7 +44,7 @@ export default {
         {
           text: "投产前准备",
           totalNum: 7,
-          rate: 100
+          rate: 120
         }, {
           text: "蓟州行停业&各业务系统T-1日批处理",
           totalNum: 78,
@@ -99,6 +99,16 @@ export default {
         // 取消loading
         this.$emit('update:loading', false)
       })
+    },
+    calcHeight(rate) {
+      const rateNum = parseInt(rate)
+      if (rateNum <= 0) {
+        return 0
+      } else if(rateNum >= 100) {
+        return 100
+      } else {
+        return rateNum
+      }
     }
   }
 }

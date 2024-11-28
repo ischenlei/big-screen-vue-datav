@@ -4,78 +4,7 @@
     <div class="wrapper">
       <div class="progress">
         <div class="progress-bar-wrapper" :style="barStyle">
-          <!-- <div class="progress-bar"></div>     -->
-          <svg class="progress-bar" width="100%" height="100%">
-            <defs>
-              <linearGradient id="linear-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#4E9CE8" />
-                <stop offset="100%" stop-color="#24FD91" />
-              </linearGradient>
-            </defs>
-            <rect x="0" y="0" width="100%" height="100%" fill="url(#linear-gradient)" rx="5">
-              <animate
-                attributeName="width"
-                from="0"
-                to="100%"
-                dur="3s"
-                fill="freeze"
-                begin="0s;endAnimation.end+4s"
-                id="endAnimation"
-              />
-            </rect>
-            
-            <defs>
-              <linearGradient id="circle-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stop-color="#CDF422" />
-                <stop offset="100%" stop-color="#FFFFFF" />
-              </linearGradient>
-            </defs>
-            <defs>
-              <filter id="glow-effect" x="-50%" y="-50%" width="200%" height="200%">
-                <!-- 模糊光晕，stdDeviation决定光晕的大小 -->
-                <feGaussianBlur stdDeviation="10" result="blur"/>
-                <!-- 光晕的颜色 -->
-                <feFlood flood-color="rgba(206, 245, 36)" result="flood"/>
-                <feComposite in2="blur" operator="in" result="composite"/>
-                <!-- 合并光晕与原图形 -->
-                <feMerge>
-                  <feMergeNode in="composite"/> <!-- 光晕 -->
-                  <feMergeNode in="SourceGraphic"/> <!-- 原图形 -->
-                </feMerge>
-              </filter>
-            </defs>
-            <circle cx="100%" cy="50%" r="15" fill="url(#circle-gradient)" filter="url(#glow-effect)">
-              <animate 
-                attributeName="cx" 
-                from="0" 
-                to="100%" 
-                dur="3s" 
-                fill="freeze"
-                begin="0s;circleAnimation.end+4s"
-                id="circleAnimation" />
-            </circle>
-            <circle cx="100%" cy="50%" r="25" fill="#CDF4224d">
-              <animate 
-                attributeName="cx" 
-                from="0" 
-                to="100%" 
-                dur="3s" 
-                fill="freeze"
-                begin="0s;circleAnimation.end+4s"
-                id="circleAnimation" />
-              <animate
-                attributeName="r" 
-                from="19"
-                to="25"
-                dur="2s"
-                fill="freeze"
-                begin="0s"
-                repeatCount="indefinite"
-                keyTimes="0;0.5;1"
-                values="19;25;19"
-              />
-            </circle>
-          </svg>
+          <div class="progress-bar"></div>    
         </div>
       </div>
       <ul class="timeline">
@@ -97,22 +26,33 @@ export default {
   },
   data() {
     return {
-      timeIndex: 17,
+      timeIndex: 19,
       timeLineList: ['12.27 00:00', '12.27 18:00', '12.27 23:59', '12.28 18:00', '12.28 23:59', '12.29 16:00', '12.29 23:59', '12.30 18:00', '12.30 23:59', '12.31 00:00', '12.31 04:00', '12.31 08:00', '12.31 12:00', '12.31 16:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00', '12.31 20:00']
     }
   },
   computed: {
-    barStyle() {
-      const percentage = ((this.timeIndex + 1) / this.timeLineList.length) * 100
-      return {
-        width: `calc(${percentage}%)`
+    percentage() {
+      let percentage = ((this.timeIndex + 1) / this.timeLineList.length) * 100
+      if (this.timeIndex >= 22) {
+        percentage = 100
       }
-    }
+      if (this.timeIndex < 0) {
+        percentage = 0
+      }
+      return parseInt(percentage)
+    },
+    barStyle() {
+      return {
+        width: `calc(${this.percentage}%)`
+      }
+    } 
   },
   mounted () {
+    this.setAnimationDur()
     // 请求数据
     this.fetchData()
     setInterval(() => {
+      this.setAnimationDur()
       // 请求数据
       this.fetchData()
     }, 60000)
@@ -136,6 +76,37 @@ export default {
         // 取消loading
         this.$emit('update:loading', false)
       })
+    },
+    setAnimationDur() {
+      let duration = 4
+      let durationBar = 4
+      let value = this.percentage
+      switch (true) {
+        case value < 20:
+          duration = 1
+          durationBar = 2
+          break;
+        case value < 40:
+          duration = 2
+          durationBar = 4
+          break;
+        case value < 60:
+          duration = 3
+          durationBar = 6
+          break;
+        case value < 80:
+          duration = 4
+          durationBar = 8
+          break;
+        case value <= 100:
+          duration = 5
+          durationBar = 10
+          break
+        default:
+          break;
+      }
+      this.$el.style.setProperty('--animation-duration', `${duration}s`);
+      this.$el.style.setProperty('--animation-bar-duration', `${durationBar}s`);
     }
   }
 }
@@ -148,7 +119,10 @@ $box-height: 266px;
 .color-grey {
   color: #818EA2;
 }
+
 .box-content {
+  --animation-duration: 4s; /* 初始动画时长 */
+  --animation-bar-duration: 4s; /* 初始动画时长 */
   position: relative;
   width: $box-width;
   height: $box-height;
@@ -175,31 +149,65 @@ $box-height: 266px;
       width: 100%;
       height: 100%;
       overflow: visible;
-      // background: linear-gradient( 90deg, #4E9CE8 0%, #24FD91 100%);
-      // animation: progressAnimation 5s linear forwards 10s infinite;
-      // animation-play-state: running;
-      // animation-fill-mode: forwards;
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   top: -5px;
-      //   right: -5px;
-      //   width: 30px;
-      //   height: 30px;
-      //   border-radius: 50%;
-      //   display: inline-block;
-        // background: linear-gradient( 45deg, #CDF422 0%, #FFFFFF 100%);
-        // box-shadow: 0 0 4px 10px rgba(206, 245, 36, 0.5);
-      // }
+      background: repeating-linear-gradient( 45deg, #4E9CE8 0%, #24FD91 100%);
+      animation: progressAnimation var(--animation-duration) linear;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        display: inline-block;
+        background: linear-gradient( 45deg, #CDF422 0%, #FFFFFF 100%);
+        box-shadow: 0 0 4px 10px rgba(206, 245, 36, 0.5);
+        animation: move 2s infinite
+      }
+      @keyframes move {
+        from {
+          box-shadow: 0 0 4px 8px rgba(206, 245, 36, 0.5);
+        }
+        50% {
+          box-shadow: 0 0 4px 10px rgba(206, 245, 36, 0.5);
+        }
+        to {
+          box-shadow: 0 0 4px 8px rgba(206, 245, 36, 0.5);
+        }
+      }
+
+      
+      &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-image: linear-gradient(120deg, transparent 0%, transparent 6rem, white 11rem, transparent 11.15rem, transparent 15rem, transparent 20rem, transparent 25rem, transparent 27rem, transparent 32rem, transparent 33rem, transparent 33.15rem, transparent 38rem, transparent 40rem, transparent 45rem, transparent 50rem, transparent 100%);
+        background-size: 150% 100%;
+        background-position: 500% 0;
+        background-repeat: no-repeat;
+        animation: shine var(--animation-bar-duration) infinite linear;
+      }
+      @keyframes shine {
+        0% {
+          background-position: 100% 0;
+        }
+        100% {
+          background-position: -190% 0;
+        }
+      }
+      @keyframes progressAnimation {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
+      }
     }
-    // @keyframes progressAnimation {
-    //   from {
-    //     width: 0;
-    //   }
-    //   to {
-    //     width: 100%;
-    //   }
-    // }
   }
   .timeline {
     width: 100%;

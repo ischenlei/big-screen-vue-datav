@@ -481,7 +481,8 @@ $box-width: 100%;
           height: 210px;
         }
         span {
-          top: 135px;
+          top: 138px;
+          color: #96ABCC;
         }
         transform: translateY(10px);
       }
@@ -492,6 +493,7 @@ $box-width: 100%;
         }
         span {
           top: 140px;
+          color: #96ABCC;
         }
         transform: translateY(10px);
       }

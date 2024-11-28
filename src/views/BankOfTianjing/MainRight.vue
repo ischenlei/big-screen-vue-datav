@@ -22,7 +22,7 @@ export default {
         ['蓟州行网点按天津银行要求设立各登…', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrey'>未运行</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
         ['蓟州行网点T-1日现金全部缴存同业处理', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
         ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
-        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
+        ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconError'>异常</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
         ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconGrass'>已完成</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
         ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
         ['蓟州行网点下载检查报表', '蓟州行', '蓟州行停业&各业务系统T-1日批处理', "<span class='iconBlue'>运行中</span>", '负责人', '2022.12.31 08:30', '2022.12.31 08:30'],
@@ -42,7 +42,8 @@ export default {
         evenRowBGC: '#04102A', //偶数行
         // index: true,
         columnWidth: [420, 150, 400, 150, 150, 200, 200],
-        hoverPause: false
+        hoverPause: false,
+        waitTime: 2000,
         // align: ['center']
       }
     }
@@ -119,7 +120,8 @@ $box-width: 100%;
           }
         }
       }
-      .iconGrass::before, .iconBlue::before, .iconGrey::before {
+
+      @mixin iconStatus {
         content: '';
         display: inline-block;
         width: 11px;
@@ -127,18 +129,26 @@ $box-width: 100%;
         border-radius: 50%;
         margin-right: 20px;
       }
-
+      $color-grass: #53B30F;
       .iconGrass::before {
-        background: #53B30F;
-        box-shadow: 0 0 2px 6px #53b30f4d;
+        @include iconStatus;
+        background: $color-grass;
+        box-shadow: 0 0 2px 6px rgba($color-grass, 0.3);
       }
       .iconBlue::before {
+        @include iconStatus;
         background: #48AFFF;
         box-shadow: 0 0 2px 6px #48AFFF4d;
       }
       .iconGrey::before {
+        @include iconStatus;
         background: #909090;
         box-shadow: 0 0 2px 6px #9090904d;
+      }
+      .iconError::before {
+        @include iconStatus;
+        background: #E24F4F;
+        box-shadow: 0 0 2px 6px #E24F4F4d;
       }
     }
   }
