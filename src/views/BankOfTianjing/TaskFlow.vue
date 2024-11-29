@@ -19,10 +19,11 @@
                 <mpath href="#path1"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="7s" repeatCount="indefinite" rotate="auto">
               <mpath href="#path1"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
         </svg>
       </div>
@@ -45,10 +46,11 @@
                 <mpath href="#path2"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="8s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path2"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
           <path id="path3" d="M -30 302, -30 431, 515 431" fill="transparent"/>
           <image :href="icon.light" x="-30" y="-15" width="60" height="30">
@@ -56,10 +58,11 @@
                 <mpath href="#path3"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="8s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path3"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
         </svg>
       </div>
@@ -82,15 +85,17 @@
                 <mpath href="#path4"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="8s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path4"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="5s" dur="8s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path4"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="5s" dur="0s" fill="freeze"/>
           </image>
         </svg>
       </div>
@@ -167,10 +172,11 @@
                 <mpath href="#path8"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="10s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path8"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
 
           <path id="path9" d="M -30 302, -30 431, 630 431, 630 302" fill="transparent"/>
@@ -179,10 +185,11 @@
                 <mpath href="#path9"/>
             </animateMotion>
           </image>
-          <image :href="icon.light" x="-30" y="-15" width="60" height="30">
+          <image :href="icon.light" x="-30" y="-15" width="60" height="30" visibility="hidden">
             <animateMotion begin="3s" dur="10s" repeatCount="indefinite" rotate="auto">
                 <mpath href="#path9"/>
             </animateMotion>
+            <set attributeName="visibility" to="visible" begin="3s" dur="0s" fill="freeze"/>
           </image>
         </svg>
       </div>

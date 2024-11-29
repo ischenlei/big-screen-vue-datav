@@ -18,7 +18,10 @@
       </div>
       <div class="box-task__center">
         <div class="text-center text-white">
-          <div class="fs-center-num">{{ stateTask }}</div>
+          <div class="fs-center-num">
+            <span>{{ stateTask }}</span>
+            <span style="font-size: 40px;">%</span>
+          </div>
           <div class="fs-center-title">任务执行情况</div>
         </div>
       </div>
@@ -54,7 +57,7 @@ export default {
       },
       totalTask: 365,
       doneTask: 289,
-      stateTask: '85%',
+      stateTask: 85,
       overTask: 346,
       abnormalTask: 3
     };
@@ -174,7 +177,7 @@ $box-width: 100%;
     }
   }
   .box-task-right {
-    left: 200px;
+    left: 230px;
   }
   .box-task__center {
     position: relative;
