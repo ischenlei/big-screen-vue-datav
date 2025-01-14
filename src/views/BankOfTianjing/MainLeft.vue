@@ -75,7 +75,7 @@ export default {
   mounted () {
     // 请求数据
     this.fetchData()
-    setInterval(() => {
+    this.time = setInterval(() => {
       // 请求数据
       this.fetchData()
     }, 60000)

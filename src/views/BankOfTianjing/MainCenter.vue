@@ -28,14 +28,14 @@
       <div>
         <div class="box-task-right">
           <div>
-            <div class="fs-sub-title">异常任务</div>
-            <div class="fs-sub-num shadow">{{ abnormalTask }}</div>
+            <div class="fs-sub-title">剩余任务</div>
+            <div class="fs-sub-num shadow">{{ overTask }}</div>
           </div>
         </div>
         <div class="box-task-right" style="margin-top: 110px;">
           <div>
-            <div class="fs-sub-title">剩余任务</div>
-            <div class="fs-sub-num shadow">{{ overTask }}</div>
+            <div class="fs-sub-title">异常任务</div>
+            <div class="fs-sub-num shadow">{{ abnormalTask }}</div>
           </div>
         </div>
       </div>

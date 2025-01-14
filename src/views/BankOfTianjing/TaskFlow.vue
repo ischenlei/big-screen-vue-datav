@@ -472,10 +472,11 @@ $box-width: 100%;
         top: 127px;
         left: 50%;
         transform: translateX(-50%);
-        font-size: 14px;
+        font-size: 20px;
         text-align: center;
         white-space: pre;
         margin: auto;
+        line-height: 1.5;
       }
       .icon-task {
         object-fit: contain;
@@ -488,10 +489,10 @@ $box-width: 100%;
           height: 210px;
         }
         span {
-          top: 138px;
+          top: 110px;
           color: #96ABCC;
         }
-        transform: translateY(10px);
+        transform: translateY(30px);
       }
       &.taskInit2 {
         img {
@@ -499,10 +500,10 @@ $box-width: 100%;
           height: 220px;
         }
         span {
-          top: 140px;
+          top: 110px;
           color: #96ABCC;
         }
-        transform: translateY(10px);
+        transform: translateY(30px);
       }
       &.taskDoing1 {
         img {
@@ -510,9 +511,9 @@ $box-width: 100%;
           height: 210px;
         }
         span {
-          top: 160px
+          top: 130px
         }
-        transform: translateY(-10px);
+        transform: translateY(5px);
       }
       &.taskDoing2 {
         img {
@@ -520,48 +521,48 @@ $box-width: 100%;
           height: 220px;
         }
         span {
-          top: 160px
+          top: 130px
         }
-        transform: translateY(-5px);
+        transform: translateY(5px);
       }
       &.taskDone1 {
         img {
           width: 194px;
           height: 212px;
-          transform: translateY(-20px)
+          transform: translateY(-5px)
         }
         span {
-          top: 150px;
+          top: 135px;
         }
       }
       &.taskDone2 {
         img {
           width: 194px;
           height: 220px;
-          transform: translateY(-20px)
+          transform: translateY(-5px)
         }
         span {
-          top: 150px
+          top: 135px
         }
       }
       &.taskError1 {
         img {
           width: 194px;
           height: 212px;
-          transform: translateY(-20px)
+          transform: translateY(-5px)
         }
         span {
-          top: 150px
+          top: 135px
         }
       }
       &.taskError2 {
         img {
           width: 194px;
           height: 220px;
-          transform: translateY(-20px)
+          transform: translateY(-5px)
         }
         span {
-          top: 150px
+          top: 135px
         }
       }
     }
@@ -571,13 +572,22 @@ $box-width: 100%;
     grid-template-columns: 1fr;
     padding: 0px;
     & > div:nth-child(1) {
-      // transform: translateY(-20px)
+      transform: translateY(10px)
     }
     & > div:nth-child(2) {
       transform: translateY(-10px)
     }
     & > div:nth-child(3) {
       transform: translateY(-20px)
+    }
+    .taskInit1:nth-child(1), .taskInit2:nth-child(1) {
+      transform: translateY(35px)
+    }
+    .taskInit1:nth-child(2), .taskInit2:nth-child(2) {
+      transform: translateY(25px)
+    }
+    .taskInit1:nth-child(3), .taskInit2:nth-child(3) {
+      transform: translateY(-10px)
     }
   }
   .flow-block__content--flow5 {

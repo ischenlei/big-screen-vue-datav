@@ -84,23 +84,23 @@ export default {
       switch (true) {
         case value < 20:
           duration = 1
-          durationBar = 2
+          durationBar = 1
           break;
         case value < 40:
           duration = 2
-          durationBar = 4
+          durationBar = 2
           break;
         case value < 60:
           duration = 3
-          durationBar = 6
+          durationBar = 4
           break;
         case value < 80:
           duration = 4
-          durationBar = 8
+          durationBar = 6
           break;
         case value <= 100:
           duration = 5
-          durationBar = 10
+          durationBar = 8
           break
         default:
           break;
